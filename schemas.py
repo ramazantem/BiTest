@@ -1,4 +1,3 @@
-# Pydantic şemaları burada tanımlanacak 
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List, Any
 from datetime import datetime
@@ -27,7 +26,7 @@ class UserOut(UserBase):
 class TestBase(BaseModel):
     title: str
     description: Optional[str] = None
-    questions: Any  # JSON (list/dict)
+    questions: Any  # JSON 
 
 class TestCreate(TestBase):
     pass
@@ -41,7 +40,7 @@ class TestOut(TestBase):
         orm_mode = True
 
 class TestResultBase(BaseModel):
-    answers: Any  # JSON (list/dict)
+    answers: Any  # JSON
     score: Optional[int] = None
 
 class TestResultCreate(TestResultBase):

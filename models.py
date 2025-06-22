@@ -1,4 +1,3 @@
-# Veritabanı modelleri burada tanımlanacak 
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, DateTime, Text
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
@@ -13,7 +12,7 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
     is_verified = Column(Boolean, default=False)
-    role = Column(String, default="user")  # 'user' veya 'admin'
+    role = Column(String, default="user") 
     created_at = Column(DateTime, default=datetime.utcnow)
     verification_token = Column(String, nullable=True)
 
@@ -25,7 +24,7 @@ class Test(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
     description = Column(Text)
-    questions = Column(Text, nullable=False)  # JSON string olarak tutulacak
+    questions = Column(Text, nullable=False)
     owner_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -37,7 +36,7 @@ class TestResult(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     test_id = Column(Integer, ForeignKey("tests.id"))
-    answers = Column(Text, nullable=False)  # JSON string olarak tutulacak
+    answers = Column(Text, nullable=False)
     score = Column(Integer)
     submitted_at = Column(DateTime, default=datetime.utcnow)
 
