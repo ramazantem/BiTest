@@ -29,7 +29,7 @@ export default function SolveTest({ testId, onSolved }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`
       },
-      body: JSON.stringify({ answers }),
+      body: JSON.stringify({ answers, score: 0 }),
     });
     onSolved();
   };
@@ -39,6 +39,8 @@ export default function SolveTest({ testId, onSolved }) {
   return (
     <form onSubmit={handleSubmit}>
       <h3>{test.title}</h3>
+      <div style={{ fontSize: 13, color: "#555" }}>{test.description}</div>
+      <div style={{ fontSize: 12, color: "#888" }}>Yayınlayan: {test.owner_id}</div>
       {test.questions.map((q, i) => (
         <div key={i}>
           <div>{q.soru}</div>
